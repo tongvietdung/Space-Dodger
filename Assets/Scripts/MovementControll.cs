@@ -42,7 +42,8 @@ public class MovementControll : MonoBehaviour
 
             // Get the move direction
             Vector3 moveDirection = clickPos - transform.position; //touchPosition - transform.position;
-            
+            moveDirection = moveDirection.normalized;
+
             // Get the rotation angle
             rotateAngle = Mathf.Atan2(moveDirection.x, moveDirection.y) * Mathf.Rad2Deg;
 
