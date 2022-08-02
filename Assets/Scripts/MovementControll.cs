@@ -51,11 +51,13 @@ public class MovementControll : MonoBehaviour
             transform.rotation = Quaternion.AngleAxis(-rotateAngle, Vector3.forward);
 
             // Get the distance between player and touch 
-            int distance = (int)Mathf.Round(moveDirection.magnitude);
-            BurstSmoke(distance);
+            float distance = Vector3.Distance(clickPos, transform.position) * 0.5f;
+            Debug.Log(distance);
+
+            BurstSmoke((int)distance);
 
             // Player floats !!!
-            rb.velocity = new Vector2(moveDirection.x, moveDirection.y) * (floatSpeed + distance * 2) * Time.deltaTime;
+            rb.velocity = new Vector2(moveDirection.x, moveDirection.y) * (floatSpeed * distance) * Time.deltaTime;
         }
     }
     void BurstSmoke(int distance)
